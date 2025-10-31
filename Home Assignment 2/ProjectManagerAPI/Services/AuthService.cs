@@ -85,9 +85,15 @@ namespace ProjectManagerAPI.Services
 
         private string GenerateJwtToken(User user)
         {
-            var jwtKey = _configuration["Jwt:Key"] ?? throw new InvalidOperationException("JWT Key not configured");
-            var jwtIssuer = _configuration["Jwt:Issuer"] ?? throw new InvalidOperationException("JWT Issuer not configured");
-            var jwtAudience = _configuration["Jwt:Audience"] ?? throw new InvalidOperationException("JWT Audience not configured");
+            var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY") 
+                ?? _configuration["Jwt:Key"] 
+                ?? throw new InvalidOperationException("JWT Key not configured");
+            var jwtIssuer = Environment.GetEnvironmentVariable("JWT_ISSUER") 
+                ?? _configuration["Jwt:Issuer"] 
+                ?? throw new InvalidOperationException("JWT Issuer not configured");
+            var jwtAudience = Environment.GetEnvironmentVariable("JWT_AUDIENCE") 
+                ?? _configuration["Jwt:Audience"] 
+                ?? throw new InvalidOperationException("JWT Audience not configured");
 
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);

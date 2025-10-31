@@ -42,9 +42,17 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
+      console.warn('Unauthorized (401) - Redirecting to login');
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      window.location.href = '/login';
+      // Use setTimeout to ensure state is updated before navigation
+      setTimeout(() => {
+        window.location.href = '/login';
+      }, 100);
+    } else if (error.response?.status === 403) {
+      console.warn('Forbidden (403) - Access denied');
+    } else if (error.response?.status >= 500) {
+      console.error('Server error:', error.response?.status, error.response?.data);
     }
     return Promise.reject(error);
   }

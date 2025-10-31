@@ -69,11 +69,22 @@ const Login = () => {
     setLoading(true);
 
     try {
+      console.log('Logging in with email:', email);
       const response = await authAPI.login({ email, password });
+      console.log('Login successful, response:', response);
+      
+      if (!response.token) {
+        setError('Invalid response from server - no token received');
+        return;
+      }
+      
       login(response);
+      console.log('Auth context updated, navigating to dashboard');
       navigate('/dashboard');
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Invalid email or password');
+      console.error('Login error:', err);
+      const errorMessage = err.response?.data?.message || err.message || 'Invalid email or password';
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
