@@ -32,6 +32,10 @@ dotnet run
 Ports used by default (see each project's config): frontend typically 5173, backend usually 5000/5102 depending on project settings.
 
 ### Home Assignment 2 — PathLock Project Manager
+
+## Deployment URL : 
+- https://path-lock-assignments.vercel.app/
+
 - Purpose: A more complete, production-style project management system with authentication, projects, tasks, resources, time logs, templates, and a smart scheduler.
 - Tech stack: .NET 8 backend (EF Core + SQLite), React 18 + TypeScript frontend (Vite).
 - Key features: JWT auth, BCrypt password hashing, project & task CRUD, time logging, templates, dark mode, real-time refresh, smart scheduler (topological sort).

@@ -2,6 +2,9 @@
 
 A modern, comprehensive project management system built with .NET 8 backend and React TypeScript frontend. Features include project tracking, task management, resource allocation, time logging, templates, and real-time updates with dark mode support.
 
+## Deployment URL : 
+- https://path-lock-assignments.vercel.app/
+
 ## 🎯 Features
 
 ### 🔐 Authentication & Authorization
