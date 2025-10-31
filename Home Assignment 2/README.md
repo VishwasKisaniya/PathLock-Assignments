@@ -304,13 +304,10 @@ Backend is configured to allow requests from:
 - Activity logs
 - Dark mode
 
-## 📄 License
-
-This project is created for a hiring assessment.
 
 ## 👨‍💻 Author
 
-Built with ❤️ for PathLock Hiring Assessment
+Built with ❤️ for PathLock
 
 ---
 
