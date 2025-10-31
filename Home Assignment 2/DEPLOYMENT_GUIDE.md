@@ -155,7 +155,7 @@ Now go back to **Render Dashboard**:
 ```json
 {
   "AllowedOrigins": [
-    "https://your-actual-vercel-url.vercel.app/login",
+    "https://your-actual-vercel-url.vercel.app",
     "http://localhost:5173"
   ]
 }
