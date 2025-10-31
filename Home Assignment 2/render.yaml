@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: pathlock-project-manager-api
+    runtime: docker
+    region: oregon
+    plan: free
+    dockerfilePath: ./ProjectManagerAPI/Dockerfile
+    dockerContext: ./ProjectManagerAPI
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ASPNETCORE_URLS
+        value: http://0.0.0.0:$PORT
+      - key: JWT_KEY
+        generateValue: true
+        sync: false
+      - key: JWT_ISSUER
+        value: ProjectManagerAPI
+      - key: JWT_AUDIENCE
+        value: ProjectManagerClient
+      - key: DATABASE_CONNECTION_STRING
+        value: Data Source=/var/data/projectmanager.db
+    disk:
+      name: pathlock-database
+      mountPath: /var/data
+      sizeGB: 1
